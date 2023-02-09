@@ -17,10 +17,16 @@ class Pessoa {
 
   Pessoa(this.nome, this.idade, this.trabalho);
 
-  void aposentadoria() {
-    
-    
-    
+  String aposentadoria() {
+    if (idade >= 60 && trabalho >= 25) {
+      return "sim";
+    } else if (trabalho >= 30) {
+      return "sim";
+    } else if (idade >= 65) {
+      return "sim";
+    } else {
+      return "não";
+    }
   }
 }
 
@@ -30,4 +36,5 @@ void check() {
   final anoTrab = int.parse(entrada(mensagem: "quantos anos trabalhados"));
 
   Pessoa usuario = Pessoa(nomePessoa, idadePessoa, anoTrab);
+  print(usuario.aposentadoria());
 }
