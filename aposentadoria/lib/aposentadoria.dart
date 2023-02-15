@@ -20,13 +20,14 @@ class Pessoa {
   String aposentadoria() {
     if (idade >= 60 && trabalho >= 25) {
       return "Parabêns $nome, você esta autorizado a se aposentar";
-    } else if (trabalho >= 30) {
-      return "Parabêns $nome, você esta autorizado a se aposentar aproveite";
-    } else if (idade >= 65) {
-      return "Parabêns $nome, sua aposentadoria esta autorizada";
-    } else {
-      return "não pode se aposentar";
     }
+    if (trabalho >= 30) {
+      return "Parabêns $nome, você esta autorizado a se aposentar aproveite";
+    }
+    if (idade >= 65) {
+      return "Parabêns $nome, sua aposentadoria esta autorizada";
+    }
+    return "não pode se aposentar";
   }
 }
 
@@ -39,3 +40,17 @@ void check() {
   print(usuario.aposentadoria());
 }
 
+void checkUser() {
+  String sair = entrada(mensagem: "efetuar consulta?").toLowerCase();
+  if (sair == "nao") {
+    print("finalizado");
+    return;
+  }
+  if (sair == "sim") {
+    check();
+    checkUser();
+    return;
+  }
+  print("Não entendi digite novamente");
+  checkUser();
+}
